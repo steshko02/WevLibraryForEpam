@@ -7,7 +7,7 @@
                 <p>Genre: ${book.genre}</p>
                 <p>Year: ${book.year}</p>
                 <p>ISBN: ${book.isbn}</p>
-                </p>
+                <p>Description: ${book.description}</p>
             </div>
             <form action="/bookPage" method="get">
                 <div class="card-body">

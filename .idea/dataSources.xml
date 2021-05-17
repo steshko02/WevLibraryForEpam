@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="db_one@localhost" uuid="3795d69a-f2b7-43ff-a8ac-1683c862d06d">
+    <data-source source="LOCAL" name="WebLibriry@localhost" uuid="657c02a3-e52a-4133-b140-adca40d3fbb3">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/db_one</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/webLib</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
       <driver-properties>
-        <property name="serverTimezone" value="Europe/Moscow" />
+        <property name="serverTimezone" value="UTC" />
       </driver-properties>
     </data-source>
   </component>

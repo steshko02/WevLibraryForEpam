@@ -3,7 +3,7 @@
     <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>WebLib</title>
+        <title>WebLibrary</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Bootstrap CSS -->
@@ -12,9 +12,10 @@
               integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
               crossorigin="anonymous">
     </head>
-    <body>
+    <body style="background-image: url('https://static4.depositphotos.com/1005951/367/i/950/depositphotos_3674237-stock-photo-books-shelf.jpg')">
     <#include "navbar.ftlh">
-    <div class="container">
+    <div  class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+    <div class="container  bg-img" style="background-image: url('https://html5book.ru/wp-content/uploads/2015/07/background42.jpg'); height: 100vh">
         <#nested>
     </div>
 
@@ -29,7 +30,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
                 integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
                 crossorigin="anonymous"></script>
-
+    </div>
     </body>
     </html>
 </#macro>

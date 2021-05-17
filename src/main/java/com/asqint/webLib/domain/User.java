@@ -163,4 +163,11 @@ public class User implements UserDetails {
     public void setActivationCode(String activationCode) {
         this.activationCode = activationCode;
     }
+
+    public User(String username, String password, String password2, String email) {
+        this.username = username;
+        this.password = password;
+        this.password2 = password2;
+        this.email = email;
+    }
 }

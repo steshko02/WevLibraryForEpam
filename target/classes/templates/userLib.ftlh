@@ -7,11 +7,9 @@
     </div>
     <div class="card-columns">
         <#list books as book>
-
             <#if book.filename??>
                 <@b.book book/>
             </#if>
-
         <#else>
             <h5>Library is empty.</h5>
         </#list>
