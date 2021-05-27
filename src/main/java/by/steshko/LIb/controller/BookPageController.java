@@ -31,7 +31,8 @@ public class BookPageController {
 
     @PostMapping("/bookPage")
     public String orderBook(@AuthenticationPrincipal User user,
-                            @RequestParam Long bookId, Map<String, Object> model
+                            @RequestParam Long bookId,
+                            Map<String, Object> model
     ) {
         if(!user.getOrderedBooksId().contains(bookId)) {
             user.addOrderedBook(bookId);

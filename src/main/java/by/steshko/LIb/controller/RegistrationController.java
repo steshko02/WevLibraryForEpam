@@ -3,6 +3,7 @@ package by.steshko.LIb.controller;
 import by.steshko.LIb.domain.User;
 import by.steshko.LIb.repos.UserRepo;
 import by.steshko.LIb.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,13 +13,9 @@ import java.util.Map;
 
 @Controller
 public class RegistrationController {
-    private final UserService userService;
-    private final UserRepo userRepo;
+    @Autowired
+    private  UserService userService;
 
-    public RegistrationController(UserService userService, UserRepo userRepo) {
-        this.userService = userService;
-        this.userRepo = userRepo;
-    }
 
     @GetMapping("/registration")
     public String registration() {
@@ -27,9 +24,8 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String addUser(User user, Map<String, Object> model) {
-        User userFromDb = userRepo.findByUsername(user.getUsername());
         boolean registered = true;
-        if(userFromDb!=null) {
+        if(userService.ifExistByEmail(user.getEmail())) {
            model.put("usernameMessage", "User exists");
            registered = false;
         }
@@ -52,7 +48,6 @@ public class RegistrationController {
             model.put("messageGood", "Successful registration! Please check your email to activate the account.");
             return "login";
         }
-
     }
 
     @GetMapping("/activate/{code}")

@@ -2,10 +2,10 @@
 <#import "parts/book.ftlh" as b>
 
 <@c.page>
-    <div class="mt-2">
+    <div >
         <h5>Book list</h5>
     </div>
-    <div class="card-columns">
+    <div class="card-columns" style="height: 100vh">
         <#list books as book>
             <#if book.filename??>
                 <@b.book book/>

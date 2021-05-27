@@ -40,8 +40,7 @@ public class AddController {
             @RequestParam String genre,
             @RequestParam String author,
             @RequestParam String description,
-            @RequestParam("file") MultipartFile file,
-            Map<String, Object> model
+            @RequestParam("file") MultipartFile file
     ) throws IOException {
         Book book = new Book(name,year, isbn, genre, author, description);
         if(file!=null){

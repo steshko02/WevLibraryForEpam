@@ -41,7 +41,7 @@ public class EditEmailController {
             model.put("oldPassMessage", "Password is not true.");
             edit = false;
         }
-        if(userService.ifExistByName(newEmail)){
+        if(userService.ifExistByEmail(newEmail)){
             model.put("emailMessage", "This email is already taken.");
             edit = false;
         }

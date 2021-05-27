@@ -4,27 +4,24 @@ import by.steshko.LIb.domain.Role;
 import by.steshko.LIb.domain.User;
 import by.steshko.LIb.repos.UserRepo;
 import com.sun.istack.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.Collections;
 import java.util.UUID;
 
 @Service
 public class UserService implements UserDetailsService {
-    private final UserRepo userRepo;
-    private final MailSender mailSender;
-    private final PasswordEncoder passwordEncoder;
-
-    public UserService(UserRepo userRepo, MailSender mailSender, PasswordEncoder passwordEncoder) {
-        this.userRepo = userRepo;
-        this.mailSender = mailSender;
-        this.passwordEncoder = passwordEncoder;
-    }
+    @Autowired
+    private  UserRepo userRepo;
+    @Autowired
+    private  MailSender mailSender;
+    @Autowired
+    private  PasswordEncoder passwordEncoder;
 
     public boolean addUser(User user){
         user.setRoles(Collections.singleton(Role.USER));
@@ -64,7 +61,6 @@ public class UserService implements UserDetailsService {
         userRepo.save(user);
         return true;
     }
-
 
     public  boolean ifExistByEmail(String email){
         return userRepo.existsByEmail(email);

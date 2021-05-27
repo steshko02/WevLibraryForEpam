@@ -1,6 +1,7 @@
 <#import "parts/common.ftlh" as c>
 
 <@c.page>
+    <div style="height: 100vh">
     <h5><#if username??>${username}</#if></h5>
     <form  method="post">
         <div style="width: 30%">
@@ -29,5 +30,6 @@
             <input type="hidden" name="_csrf" value="${_csrf.token}" />
         </div>
     </form>
+    </div>
 </@c.page>
 

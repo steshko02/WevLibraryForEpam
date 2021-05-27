@@ -2,7 +2,7 @@
 <#import "parts/login.ftlh" as l>
 
 <@c.page>
-    <div class="container mt-5">
+    <div class="container" style="height: 100vh">
         <h5>Sign In</h5>
         <#if Session?? && Session.SPRING_SECURITY_LAST_EXCEPTION??>
             <div class="alert alert-danger" role="alert">

@@ -1,8 +1,9 @@
 <#import "parts/common.ftlh" as c>
 
-<@c.page>
+<@c.page >
+    <div style="height: 100vh">
     <h5><#if username??>${username}</#if></h5>
-    <form  method="post">
+    <form  method="post" >
         <div style="width: 30%">
             <label for="emailInput"> Enter new email: </label>
             <input class="form-control <#if emailMessage??>is-invalid</#if>"
@@ -29,5 +30,6 @@
             <input type="hidden" name="_csrf" value="${_csrf.token}" />
         </div>
     </form>
+    </div>
 </@c.page>
 

@@ -2,10 +2,10 @@
 <#import "parts/book.ftlh" as b>
 
 <@c.page>
-    <div class="mt-2">
+    <div >
         <h4>Your orders</h4>
     </div>
-    <div class="container">
+    <div class="container" style="height: 100vh">
         <div class="row my-3">
             <div class="col-sm">
                 <h6>Book</h6>

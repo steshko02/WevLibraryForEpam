@@ -1,8 +1,6 @@
 <#import "parts/common.ftlh" as c>
 <#import "parts/book.ftlh" as b>
-
 <@c.page>
-
       <form method="get" class="navbar-form navbar-right" action="filter">
           <div class="input-group">
               <div class="form-outline">
@@ -13,7 +11,7 @@
               </button>
           </div>
     </form>
-    <div class="mt-2">
+    <div >
         <h5>Our books</h5>
     </div>
     <div class="card-columns">

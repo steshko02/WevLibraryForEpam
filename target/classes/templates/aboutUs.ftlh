@@ -2,7 +2,8 @@
 <#include "parts/security.ftlh">
 
 <@c.page>
-    <div class="jumbotron mt-5">
+<div style="height: 100vh">
+    <div class="jumbotron" >
         <p class="container">
             Hello, if you like to read, then this site was created especially for you.
             We give the opportunity to read the works of world literature of interest absolutely free.
@@ -19,6 +20,7 @@
             <a href="#"> Instagram </a>
         </p>
         <div>
+    </div>
     </div>
 </@c.page>
 
