@@ -1,5 +1,6 @@
 package com.asqint.webLib.domain;
 
+import lombok.Data;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,6 +13,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "usr")
+@Data
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -47,14 +49,6 @@ public class User implements UserDetails {
         return this.roles.contains(Role.ADMIN);
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -88,28 +82,9 @@ public class User implements UserDetails {
         return getRoles();
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public boolean isActive() {
         return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
     }
 
     public boolean orderedBook(Long bookId){
@@ -122,46 +97,6 @@ public class User implements UserDetails {
 
     public void addOrderedBook(Long id) {
         this.orderedBooksId.add(id);
-    }
-
-    public List<Long> getOrderedBooksId() {
-        return orderedBooksId;
-    }
-
-    public void setOrderedBooksId(List<Long> booksId) {
-        this.orderedBooksId = booksId;
-    }
-
-    public List<Long> getLibBooksId() {
-        return libBooksId;
-    }
-
-    public void setLibBooksId(List<Long> libBooksId) {
-        this.libBooksId = libBooksId;
-    }
-
-    public String getPassword2() {
-        return password2;
-    }
-
-    public void setPassword2(String password2) {
-        this.password2 = password2;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getActivationCode() {
-        return activationCode;
-    }
-
-    public void setActivationCode(String activationCode) {
-        this.activationCode = activationCode;
     }
 
     public User(String username, String password, String password2, String email) {
