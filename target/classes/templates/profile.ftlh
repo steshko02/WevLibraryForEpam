@@ -3,12 +3,12 @@
 <@c.page>
     <h4>${username}</h4>
     <form  method="post">
-        <div>
+        <div style="width: 50%">
             <label for="emailInput"> Email: </label>
             <input class="form-control"
                    type="email" id="emailInput" name="email" required/>
         </div>
-        <div>
+        <div style="width: 50%">
             <label for="passwordInput"> Password: </label>
             <input class="form-control <#if passMessage??>is-invalid</#if>"
                    type="password" id="passwordInput" name="password" required

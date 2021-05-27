@@ -1,5 +1,6 @@
-package com.asqint.webLib.domain;
+package by.steshko.LIb.domain;
 
+import by.steshko.LIb.domain.Book;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,4 +1,4 @@
-package com.asqint.webLib.config;
+package by.steshko.LIb.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

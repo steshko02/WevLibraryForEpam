@@ -1,5 +1,7 @@
-package com.asqint.webLib.domain;
+package by.steshko.LIb.domain;
 
+import by.steshko.LIb.domain.Role;
+import by.steshko.LIb.domain.User;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;

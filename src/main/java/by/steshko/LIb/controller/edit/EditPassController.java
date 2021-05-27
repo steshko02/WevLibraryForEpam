@@ -1,4 +1,4 @@
-package by.steshko.LIb.controller;
+package by.steshko.LIb.controller.edit;
 import by.steshko.LIb.domain.User;
 import by.steshko.LIb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

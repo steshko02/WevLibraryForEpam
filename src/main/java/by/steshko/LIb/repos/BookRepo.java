@@ -1,6 +1,7 @@
-package com.asqint.webLib.repos;
+package by.steshko.LIb.repos;
 
-import com.asqint.webLib.domain.Book;
+
+import by.steshko.LIb.domain.Book;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

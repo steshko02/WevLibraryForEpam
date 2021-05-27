@@ -1,4 +1,4 @@
-package com.asqint.webLib.domain;
+package by.steshko.LIb.domain;
 
 import lombok.Data;
 

@@ -1,13 +1,12 @@
-package com.asqint.webLib.service;
+package by.steshko.LIb.service;
 
-import com.asqint.webLib.domain.Role;
-import com.asqint.webLib.domain.User;
-import com.asqint.webLib.repos.UserRepo;
-import org.springframework.context.annotation.Bean;
+import by.steshko.LIb.domain.Role;
+import by.steshko.LIb.domain.User;
+import by.steshko.LIb.repos.UserRepo;
+import com.sun.istack.NotNull;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -66,27 +65,48 @@ public class UserService implements UserDetailsService {
         return true;
     }
 
-    public boolean updateProfile(User user, String password, String email) {
 
-      String userEmail  = user.getEmail();
-        boolean isEmailChanged = (email !=null && !email.equals(userEmail)) ||
-                (userEmail !=null && !userEmail.equals(email));
+    public  boolean ifExistByEmail(String email){
+        return userRepo.existsByEmail(email);
+    }
 
-        if(isEmailChanged){
-            user.setEmail(email);
-            if(!StringUtils.isEmpty(email)){
-                user.setActivationCode(UUID.randomUUID().toString());
-            }
-        }
-        if(!StringUtils.isEmpty(password)){
+    public  boolean ifExistByName(String name){
+        return userRepo.existsByUsername(name);
+    }
+    public void updatePassword(@NotNull User user, String password,String oldPassword) {
+
+        boolean isPasswordChanged=passwordEncoder.matches(oldPassword,user.getPassword());
+
+        if(isPasswordChanged) {
             user.setPassword(passwordEncoder.encode(password));
+            user.setActivationCode(UUID.randomUUID().toString());
+            user.setActive(false);//
+            userRepo.save(user);//
+            sendMessage(user);//
         }
-        user.setActive(false);
-        userRepo.save(user);
+    }
+//вынести в отдельный метод
+    public void updateEmail(User user, String email) {
+        boolean isEmailChanged=!email.equals(user.getEmail());
+
         if(isEmailChanged) {
+            user.setEmail(email);
+            user.setActivationCode(UUID.randomUUID().toString());
+            user.setActive(false);
+            userRepo.save(user);
             sendMessage(user);
-            return true;
         }
-        return false;
+    }
+
+    public void updateName(User user, String newName) {
+        boolean isNameChanged=!newName.equals(user.getUsername());
+
+        if(isNameChanged) {
+            user.setUsername(newName);
+            user.setActivationCode(UUID.randomUUID().toString());
+            user.setActive(false);
+            userRepo.save(user);
+            sendMessage(user);
+        }
     }
 }

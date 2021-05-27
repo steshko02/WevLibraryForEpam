@@ -1,9 +1,9 @@
-package com.asqint.webLib.controller;
+package by.steshko.LIb.controller;
 
-import com.asqint.webLib.domain.Book;
-import com.asqint.webLib.domain.User;
-import com.asqint.webLib.repos.BookRepo;
-import com.asqint.webLib.repos.UserRepo;
+import by.steshko.LIb.domain.Book;
+import by.steshko.LIb.domain.User;
+import by.steshko.LIb.repos.BookRepo;
+import by.steshko.LIb.repos.UserRepo;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

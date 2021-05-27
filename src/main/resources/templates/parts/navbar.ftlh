@@ -24,12 +24,19 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/userLib">My books</a>
                     </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">Profile
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/profile/editPass">Edit password</a></li>
+                            <li><a href="/profile/editEmail">Edit email</a></li>
+                            <li><a href="/profile/editName">Edit name</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/aboutUs">About Us</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/profile">Edit Profile</a>
-                    </li>
+
                 </#if>
                 <#if isAdmin>
                     <li class="nav-item">

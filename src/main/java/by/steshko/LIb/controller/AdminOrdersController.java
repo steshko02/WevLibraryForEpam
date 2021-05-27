@@ -1,11 +1,11 @@
-package com.asqint.webLib.controller;
+package by.steshko.LIb.controller;
 
-
-import com.asqint.webLib.domain.Book;
-import com.asqint.webLib.domain.User;
-import com.asqint.webLib.repos.BookRepo;
-import com.asqint.webLib.repos.UserRepo;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import by.steshko.LIb.domain.Book;
+import by.steshko.LIb.domain.User;
+import by.steshko.LIb.repos.BookRepo;
+import by.steshko.LIb.repos.UserRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,13 +17,12 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@PreAuthorize("hasAuthority('ADMIN')")
 public class AdminOrdersController {
-    private final UserRepo userRepo;
-    private final BookRepo bookRepo;
-    public AdminOrdersController(UserRepo userRepo, BookRepo bookRepo) {
-        this.userRepo = userRepo;
-        this.bookRepo = bookRepo;
-    }
+    @Autowired
+    private  UserRepo userRepo;
+    @Autowired
+    private  BookRepo bookRepo;
 
     @GetMapping("/adminOrders")
     public String adminOrders(Map<String, Object> model) {

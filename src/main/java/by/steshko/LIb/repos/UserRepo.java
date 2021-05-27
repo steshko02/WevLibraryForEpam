@@ -1,12 +1,13 @@
-package com.asqint.webLib.repos;
+package by.steshko.LIb.repos;
 
+import by.steshko.LIb.domain.User;
 import org.springframework.data.repository.CrudRepository;
-import com.asqint.webLib.domain.User;
 
-import java.util.List;
 
 public interface UserRepo extends CrudRepository<User, Long> {
     User findByUsername(String username);
 
     User findByActivationCode(String code);
+    boolean existsByUsername(String username);
+    boolean existsByEmail(String email);
 }

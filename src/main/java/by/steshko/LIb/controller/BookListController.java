@@ -1,8 +1,7 @@
-package com.asqint.webLib.controller;
+package by.steshko.LIb.controller;
 
-import com.asqint.webLib.domain.Book;
-import com.asqint.webLib.repos.BookRepo;
-import org.springframework.beans.factory.annotation.Autowired;
+import by.steshko.LIb.domain.Book;
+import by.steshko.LIb.repos.BookRepo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 

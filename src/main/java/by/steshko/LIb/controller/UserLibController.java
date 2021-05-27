@@ -1,8 +1,8 @@
-package com.asqint.webLib.controller;
-
-import com.asqint.webLib.domain.Book;
-import com.asqint.webLib.domain.User;
-import com.asqint.webLib.repos.BookRepo;
+package by.steshko.LIb.controller;
+import by.steshko.LIb.domain.Book;
+import by.steshko.LIb.domain.User;
+import by.steshko.LIb.repos.BookRepo;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@PreAuthorize("hasAuthority('USER')")
 public class UserLibController {
     private final BookRepo bookRepo;
 

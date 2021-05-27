@@ -1,6 +1,7 @@
-package com.asqint.webLib.config;
+package by.steshko.LIb.config;
 
-import com.asqint.webLib.service.UserService;
+import by.steshko.LIb.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
@@ -16,13 +17,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    private final UserService userService;
-    private final PasswordEncoder passwordEncoder;
+    @Autowired
+    private  UserService userService;
+    @Autowired
+    private  PasswordEncoder passwordEncoder;
 
-    public WebSecurityConfig(@Lazy UserService userService, @Lazy PasswordEncoder passwordEncoder) {
-        this.userService = userService;
-        this.passwordEncoder = passwordEncoder;
-    }
 
     @Bean
     public PasswordEncoder getPasswordEncoder() {

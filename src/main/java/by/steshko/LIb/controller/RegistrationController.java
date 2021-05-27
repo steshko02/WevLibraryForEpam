@@ -1,8 +1,8 @@
-package com.asqint.webLib.controller;
+package by.steshko.LIb.controller;
 
-import com.asqint.webLib.domain.User;
-import com.asqint.webLib.repos.UserRepo;
-import com.asqint.webLib.service.UserService;
+import by.steshko.LIb.domain.User;
+import by.steshko.LIb.repos.UserRepo;
+import by.steshko.LIb.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
