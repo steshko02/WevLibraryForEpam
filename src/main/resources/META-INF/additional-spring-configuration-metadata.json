@@ -1,8 +1,1 @@
-{
-  "properties": [
-    {
-      "name": "upload.path",
-      "type": "java.lang.String",
-      "description": "for uploads."
-    }
-  ] }
+{ "properties": [ ] }
