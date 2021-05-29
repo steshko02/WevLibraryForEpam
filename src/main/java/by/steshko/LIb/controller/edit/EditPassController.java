@@ -4,6 +4,7 @@ import by.steshko.LIb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -56,7 +57,8 @@ public class EditPassController {
             userService.updatePassword(user, password,oldPassword);
             model.put("messageGood", "Successful! Please check your email to activate the account.");
 
-            return "redirect:/logout";
+            SecurityContextHolder.clearContext();
+            return "redirect:/login";
         }
         else return  "editPass";
     }

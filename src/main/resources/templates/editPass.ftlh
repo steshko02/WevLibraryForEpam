@@ -2,7 +2,7 @@
 
 <@c.page>
     <div style="height: 100vh">
-    <h5><#if username??>${username}</#if></h5>
+        <#if username??><h5>${username}</h5></#if>
     <form  method="post">
         <div style="width: 30%">
             <label for="passwordInput"> Enter old password: </label>
@@ -38,6 +38,7 @@
             </#if>
         </div>
         <div class="my-2">
+            <h6 style="font-size: smaller;color: darkgreen"> Аfter confirmation, you must activate your account.</h6>
             <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Submit</button>
             <input type="hidden" name="_csrf" value="${_csrf.token}" />
         </div>

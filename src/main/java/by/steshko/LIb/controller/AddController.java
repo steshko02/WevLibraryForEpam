@@ -2,6 +2,7 @@ package by.steshko.LIb.controller;
 
 import by.steshko.LIb.domain.Book;
 import by.steshko.LIb.repos.BookRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -21,11 +22,9 @@ public class AddController {
     @Value("${upload.path}")
     private String uploadPath;
 
-    private final BookRepo bookRepo;
 
-    public AddController(BookRepo bookRepo) {
-        this.bookRepo = bookRepo;
-    }
+    @Autowired
+    private  BookRepo bookRepo;
 
     @GetMapping("/addBook")
     public String main(Map<String, Object> model){

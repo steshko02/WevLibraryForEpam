@@ -2,8 +2,9 @@
 <#include "parts/security.ftlh">
 
 <@c.page>
+    <div style="height: 100vh">
     <#if book.filename??>
-        <div class="container mt-5">
+        <div class="container">
         <div class="row">
             <div class="col-sm-4">
                 <img src="/img/${book.filename}" class="card-img-top" alt="No image">
@@ -27,7 +28,7 @@
                         <div class="alert alert-warning" role="alert">
                             Book has been ordered!
                         </div>
-                    <#else>
+                     <#else>
                         <#if user.bookInLib(book.id)>
                             <div class="alert alert-success" role="alert">
                                 Book in your lib!
@@ -41,13 +42,38 @@
                                         <input type="hidden" name="_csrf" value="${_csrf.token}" />
                                     </div>
                                 </form>
-                        </#if>
+                            </#if>
+                    </#if>
+                </#if>
+                <#if isAdmin >
+                    <form method="get" action="/bookPage/edit">
+                        <div class="my-5">
+                            <input type="hidden" name="bookId" value="${book.id}">
+                            <button class="btn btn-outline-success">Edit</button>
+                            <label>${message!}</label>
+                            <input type="hidden" name="_csrf" value="${_csrf.token}" />
+                        </div>
+                    </form>
+<#--                    <#if user.orderedBook(book.id)>-->
+<#--                        <div class="alert alert-warning" role="alert">-->
+<#--                            Book has been ordered!You can't delete this book!Deny or give order.-->
+<#--                        </div>-->
+<#--                    <#else>-->
+<#--                        <form method="post" action="/admin/bookList/delete">-->
+<#--                            <div class="my-5">-->
+<#--                                <input type="hidden" name="bookId" value="${book.id}">-->
+<#--                                <input type="hidden" name="userId" value="${user.id}" />-->
+<#--                                <button class="btn btn-outline-success">Delete</button>-->
+<#--                                <label>${message!}</label>-->
+<#--                                <input type="hidden" name="_csrf" value="${_csrf.token}" />-->
+<#--                            </div>-->
+<#--                        </form>-->
+<#--                        </#if>-->
                     </#if>
                 </#if>
             </div>
         </div>
 
     </div>
-    </#if>
-
+    </div>
 </@c.page>

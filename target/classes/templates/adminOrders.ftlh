@@ -2,19 +2,19 @@
 <#import "parts/book.ftlh" as b>
 
 <@c.page>
-    <div class="mt-2">
+    <div >
         <h4>Users ordered this books:</h4>
     </div>
-    <div class="container">
+    <div class="container" style="height: 100vh">
         <div class="row my-3">
             <div class="col-sm">
                 <h6>Book</h6>
             </div>
             <div class="col-sm">
-                <h6>Author</h6>
+                <h6>User</h6>
             </div>
             <div class="col-sm">
-                <h6>User</h6>
+                <h6>Author</h6>
             </div>
             <div class="col-sm">
             </div>

@@ -1,7 +1,8 @@
 <#import "parts/common.ftlh" as c>
 <#import "parts/book.ftlh" as b>
-<@c.page>
-      <form method="get" class="navbar-form navbar-right" action="filter">
+<@c.page >
+    <div style="height: 100vh">
+      <form method="get" class="navbar-form navbar-left" action="filter">
           <div class="input-group">
               <div class="form-outline">
                   <input name="filter" type="search" id="form1" class="form-control"/>
@@ -22,5 +23,6 @@
         <#else>
             <h5>Library is empty.</h5>
         </#list>
+    </div>
     </div>
 </@c.page>

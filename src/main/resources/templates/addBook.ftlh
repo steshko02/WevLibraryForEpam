@@ -2,10 +2,10 @@
 <#import "parts/book.ftlh" as b>
 
 <@c.page>
-    <div class="mt-4">
+    <div >
         <h5>Add new book</h5>
 </div>
-<div>
+<div style="height: 100vh">
     <form method="post" enctype="multipart/form-data">
         <div class="form-group col-sm-5">
             <label for="nameInput">Book name:</label>

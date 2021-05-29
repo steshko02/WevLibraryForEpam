@@ -1,0 +1,204 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 132120576 bytes for Failed to commit area from 0x0000000082600000 to 0x000000008a400000 of length 132120576.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (./src/hotspot/os/windows/os_windows.cpp:3310), pid=15084, tid=15884
+#
+# JRE version:  (13.0.7+5) (build )
+# Java VM: OpenJDK 64-Bit Server VM (13.0.7+5-MTS, mixed mode, sharing, tiered, compressed oops, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -XX:TieredStopAtLevel=1 -Xverify:none -Dspring.output.ansi.enabled=always -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2020.3.2\lib\idea_rt.jar=62702:C:\Program Files\JetBrains\IntelliJ IDEA 2020.3.2\bin -Dcom.sun.management.jmxremote -Dspring.jmx.enabled=true -Dspring.liveBeansView.mbeanDomain -Dspring.application.admin.enabled=true -Dfile.encoding=UTF-8 by.steshko.LIb.WebLibApplication
+
+Host: Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz, 8 cores, 7G,  Windows 10 , 64 bit Build 18362 (10.0.18362.1350)
+Time: Fri May 28 00:42:33 2021 Aaea?onu (ceia) elapsed time: 0.152947 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000020071c0b800):  JavaThread "Unknown thread" [_thread_in_vm, id=15884, stack(0x0000009663100000,0x0000009663200000)]
+
+Stack: [0x0000009663100000,0x0000009663200000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x6333fa]
+V  [jvm.dll+0x7de17a]
+V  [jvm.dll+0x7df92f]
+V  [jvm.dll+0x7dff73]
+V  [jvm.dll+0x250d68]
+V  [jvm.dll+0x63066a]
+V  [jvm.dll+0x625325]
+V  [jvm.dll+0x30fe4c]
+V  [jvm.dll+0x30fc82]
+V  [jvm.dll+0x3153f6]
+V  [jvm.dll+0x35bf76]
+V  [jvm.dll+0x35b750]
+V  [jvm.dll+0x2ea6da]
+V  [jvm.dll+0x2eb972]
+V  [jvm.dll+0x7baca8]
+V  [jvm.dll+0x369959]
+V  [jvm.dll+0x79da85]
+V  [jvm.dll+0x3d413f]
+V  [jvm.dll+0x3d66a1]
+C  [jli.dll+0x520f]
+C  [ucrtbase.dll+0x210b2]
+C  [KERNEL32.DLL+0x17c24]
+C  [ntdll.dll+0x6d721]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007ffbb8d98748, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x0000020071c51800 GCTaskThread "GC Thread#0" [stack: 0x0000009663200000,0x0000009663300000] [id=13584]
+  0x0000020071c62800 ConcurrentGCThread "G1 Main Marker" [stack: 0x0000009663300000,0x0000009663400000] [id=20472]
+  0x0000020071c64800 ConcurrentGCThread "G1 Conc#0" [stack: 0x0000009663400000,0x0000009663500000] [id=10020]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffbb854a5d7]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x0000020071c08f90] Heap_lock - owner thread: 0x0000020071c0b800
+
+Heap address: 0x0000000082600000, size: 2010 MB, Compressed Oops mode: Non-zero based: 0x0000000082600000
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (1 events):
+Event: 0.061 Loaded shared library C:\Program Files\Zulu\zulu-13\bin\zip.dll
+
+
+Dynamic libraries:
+0x00007ff749d70000 - 0x00007ff749d7d000 	C:\Program Files\Zulu\zulu-13\bin\java.exe
+0x00007ffc01e80000 - 0x00007ffc02070000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ffc003f0000 - 0x00007ffc004a2000 	C:\Windows\System32\KERNEL32.DLL
+0x00007ffbfef80000 - 0x00007ffbff225000 	C:\Windows\System32\KERNELBASE.dll
+0x00007ffbff9d0000 - 0x00007ffbffaca000 	C:\Windows\System32\ucrtbase.dll
+0x00007ffbfc4e0000 - 0x00007ffbfc4f7000 	C:\Program Files\Zulu\zulu-13\bin\jli.dll
+0x00007ffbfc500000 - 0x00007ffbfc515000 	C:\Program Files\Zulu\zulu-13\bin\VCRUNTIME140.dll
+0x00007ffc01bd0000 - 0x00007ffc01d64000 	C:\Windows\System32\USER32.dll
+0x00007ffbfedf0000 - 0x00007ffbfee11000 	C:\Windows\System32\win32u.dll
+0x00007ffbe36b0000 - 0x00007ffbe3934000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.18362.1440_none_9e7dbfb9e45e8e67\COMCTL32.dll
+0x00007ffc00800000 - 0x00007ffc00826000 	C:\Windows\System32\GDI32.dll
+0x00007ffc008e0000 - 0x00007ffc0097e000 	C:\Windows\System32\msvcrt.dll
+0x00007ffc00980000 - 0x00007ffc00cb6000 	C:\Windows\System32\combase.dll
+0x00007ffbffd60000 - 0x00007ffbffef8000 	C:\Windows\System32\gdi32full.dll
+0x00007ffc01300000 - 0x00007ffc0141f000 	C:\Windows\System32\RPCRT4.dll
+0x00007ffbffad0000 - 0x00007ffbffb6e000 	C:\Windows\System32\msvcp_win.dll
+0x00007ffbffcd0000 - 0x00007ffbffd51000 	C:\Windows\System32\bcryptPrimitives.dll
+0x00007ffc003c0000 - 0x00007ffc003ee000 	C:\Windows\System32\IMM32.DLL
+0x00007ffbf91f0000 - 0x00007ffbf928b000 	C:\Program Files\Zulu\zulu-13\bin\msvcp140.dll
+0x00007ffbb8250000 - 0x00007ffbb8e40000 	C:\Program Files\Zulu\zulu-13\bin\server\jvm.dll
+0x00007ffc00730000 - 0x00007ffc007d3000 	C:\Windows\System32\ADVAPI32.dll
+0x00007ffc00cc0000 - 0x00007ffc00d57000 	C:\Windows\System32\sechost.dll
+0x00007ffc005c0000 - 0x00007ffc005c8000 	C:\Windows\System32\PSAPI.DLL
+0x00007ffbe3a40000 - 0x00007ffbe3a49000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007ffc01d70000 - 0x00007ffc01ddf000 	C:\Windows\System32\WS2_32.dll
+0x00007ffbfad30000 - 0x00007ffbfad54000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ffbf96d0000 - 0x00007ffbf96da000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ffbfad00000 - 0x00007ffbfad2d000 	C:\Windows\SYSTEM32\winmmbase.dll
+0x00007ffbffc20000 - 0x00007ffbffc6a000 	C:\Windows\System32\cfgmgr32.dll
+0x00007ffbfed40000 - 0x00007ffbfed51000 	C:\Windows\System32\kernel.appcore.dll
+0x00007ffbfb8d0000 - 0x00007ffbfb8e0000 	C:\Program Files\Zulu\zulu-13\bin\verify.dll
+0x00007ffbfd630000 - 0x00007ffbfd824000 	C:\Windows\SYSTEM32\DBGHELP.DLL
+0x00007ffbddcc0000 - 0x00007ffbddcea000 	C:\Windows\SYSTEM32\dbgcore.DLL
+0x00007ffbf9300000 - 0x00007ffbf9326000 	C:\Program Files\Zulu\zulu-13\bin\java.dll
+0x00007ffbfa2a0000 - 0x00007ffbfa2aa000 	C:\Program Files\Zulu\zulu-13\bin\jimage.dll
+0x00007ffbf92c0000 - 0x00007ffbf92ce000 	C:\Program Files\Zulu\zulu-13\bin\instrument.dll
+0x00007ffbf92d0000 - 0x00007ffbf92e7000 	C:\Program Files\Zulu\zulu-13\bin\zip.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Program Files\Zulu\zulu-13\bin;C:\Windows\SYSTEM32;C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.18362.1440_none_9e7dbfb9e45e8e67;C:\Program Files\Zulu\zulu-13\bin\server
+
+VM Arguments:
+jvm_args: -XX:TieredStopAtLevel=1 -Xverify:none -Dspring.output.ansi.enabled=always -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2020.3.2\lib\idea_rt.jar=62702:C:\Program Files\JetBrains\IntelliJ IDEA 2020.3.2\bin -Dcom.sun.management.jmxremote -Dspring.jmx.enabled=true -Dspring.liveBeansView.mbeanDomain -Dspring.application.admin.enabled=true -Dfile.encoding=UTF-8 
+java_command: by.steshko.LIb.WebLibApplication
+java_class_path (initial): D:\EpamFP\target\classes;C:\Users\stesh\.m2\repository\org\springframework\boot\spring-boot-starter-web\2.2.7.RELEASE\spring-boot-starter-web-2.2.7.RELEASE.jar;C:\Users\stesh\.m2\repository\org\springframework\boot\spring-boot-starter\2.2.7.RELEASE\spring-boot-starter-2.2.7.RELEASE.jar;C:\Users\stesh\.m2\repository\org\springframework\boot\spring-boot-starter-logging\2.2.7.RELEASE\spring-boot-starter-logging-2.2.7.RELEASE.jar;C:\Users\stesh\.m2\repository\ch\qos\logback\logback-classic\1.2.3\logback-classic-1.2.3.jar;C:\Users\stesh\.m2\repository\ch\qos\logback\logback-core\1.2.3\logback-core-1.2.3.jar;C:\Users\stesh\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.12.1\log4j-to-slf4j-2.12.1.jar;C:\Users\stesh\.m2\repository\org\apache\logging\log4j\log4j-api\2.12.1\log4j-api-2.12.1.jar;C:\Users\stesh\.m2\repository\org\slf4j\jul-to-slf4j\1.7.30\jul-to-slf4j-1.7.30.jar;C:\Users\stesh\.m2\repository\jakarta\annotation\jakarta.annotation-api\1.3.5\jakarta.annotation-api-1.3.5.jar;C:\Users\stesh\.m2\repository\org\yaml\snakeyaml\1.25\snakeyaml-1.25.jar;C:\Users\stesh\.m2\repository\org\springframework\boot\spring-boot-starter-json\2.2.7.RELEASE\spring-boot-starter-json-2.2.7.RELEASE.jar;C:\Users\stesh\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.10.4\jackson-databind-2.10.4.jar;C:\Users\stesh\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.10.4\jackson-annotations-2.10.4.jar;C:\Users\stesh\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.10.4\jackson-core-2.10.4.jar;C:\Users\stesh\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.10.4\jackson-datatype-jdk8-2.10.4.jar;C:\Users\stesh\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.10.4\jackson-datatype-jsr310-2.10.4.jar;C:\Users\stesh\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.10.4\jackson-module-parameter-names-2.10.4.jar;C:\Users\stesh\.m2\repository\org\springframew
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 2                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 8                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 132120576                                 {product} {ergonomic}
+     bool ManagementServer                         = true                                      {product} {command line}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 2107637760                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 7549744                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 244108496                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 0                                      {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 2107637760                             {manageable} {ergonomic}
+     intx TieredStopAtLevel                        = 1                                         {product} {command line}
+     bool UseCompressedClassPointers               = true                                 {lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                                 {lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk1.8.0_281
+PATH=C:\Program Files\Zulu\zulu-13\bin\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\Program Files\Java\jdk1.8.0_281\bin;C:\Program Files\Git\cmd;C:\Program Files (x86)\GitExtensions\;C:\Program Files\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\stesh\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.3.2\bin;;;C:\Program Files\JetBrains\IntelliJ IDEA 2020.3.2\bin;;C:\Users\stesh\AppData\Roaming\npm
+USERNAME=stesh
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 158 Stepping 10, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10 , 64 bit Build 18362 (10.0.18362.1350)
+OS uptime: 2 days 3:40 hours
+
+CPU:total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 158 stepping 10, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx, fma
+
+Memory: 4k page, system-wide physical 8035M (822M free)
+TotalPageFile size 16227M (AvailPageFile size 89M)
+current process WorkingSet (physical memory assigned to process): 10M, peak: 10M
+current process commit charge ("private bytes"): 58M, peak: 184M
+
+vm_info: OpenJDK 64-Bit Server VM (13.0.7+5-MTS) for windows-amd64 JRE (13.0.7+5-MTS) (Zulu13.40+15-CA), built on Apr  5 2021 14:56:59 by "zulu_re" with MS VC++ 15.9 (VS2017)
+
+END.

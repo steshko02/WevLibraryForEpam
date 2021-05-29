@@ -4,6 +4,8 @@ import by.steshko.LIb.domain.Book;
 import by.steshko.LIb.domain.User;
 import by.steshko.LIb.repos.BookRepo;
 import by.steshko.LIb.repos.UserRepo;
+import by.steshko.LIb.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,13 +16,13 @@ import java.util.Map;
 
 @Controller
 public class BookPageController {
-    private final UserRepo userRepo;
-    private final BookRepo bookRepo;
+    @Autowired
+    private  UserRepo userRepo;
+    @Autowired
+    private  BookRepo bookRepo;
+    @Autowired
+    private BookService bookService;
 
-    public BookPageController(UserRepo userRepo, BookRepo bookRepo) {
-        this.userRepo = userRepo;
-        this.bookRepo = bookRepo;
-    }
 
     @GetMapping("/bookPage")
     public String bookPage(@RequestParam Long bookId, Map<String, Object> model) {

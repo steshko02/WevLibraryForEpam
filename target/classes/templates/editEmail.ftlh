@@ -2,8 +2,8 @@
 
 <@c.page >
     <div style="height: 100vh">
-    <h5><#if username??>${username}</#if></h5>
-    <form  method="post" >
+        <#if username??><h5>${username}</h5></#if>
+    <form  method="post">
         <div style="width: 30%">
             <label for="emailInput"> Enter new email: </label>
             <input class="form-control <#if emailMessage??>is-invalid</#if>"
@@ -25,8 +25,10 @@
                 </div>
             </#if>
         </div>
+
         <div class="my-2">
-            <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Submit</button>
+            <h6 style="font-size: smaller; color: darkgreen" > Аfter confirmation, you must activate your account.</h6>
+            <button type="submit"  class="btn btn-outline-success my-2 my-sm-0">Submit</button>
             <input type="hidden" name="_csrf" value="${_csrf.token}" />
         </div>
     </form>

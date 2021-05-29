@@ -31,6 +31,7 @@ public class UserOrdersController {
         for(Long id:user.getOrderedBooksId()) {
             books.add(bookRepo.findById(id).orElse(new Book()));
         }
+        //переделать
         model.put("books",books);
         return "userOrders";
     }
