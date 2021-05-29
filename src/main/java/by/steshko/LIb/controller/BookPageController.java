@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -27,18 +28,26 @@ public class BookPageController {
     @GetMapping("/bookPage")
     public String bookPage(@RequestParam Long bookId, Map<String, Object> model) {
         Book book = bookRepo.findById(bookId).orElse(new Book());
+        Iterable<User> users = userRepo.findAll();
+        for(User user:users) {
+            List<Long> booksId = user.getOrderedBooksId();
+            if(booksId.contains(bookId)) {
+                model.put("errorDeleteID", bookId);
+            }
+        }
         model.put("book", book);
         return "bookPage";
     }
 
     @PostMapping("/bookPage")
     public String orderBook(@AuthenticationPrincipal User user,
-                            @RequestParam Long bookId,
-                            Map<String, Object> model
+                            @RequestParam Long bookId
     ) {
         if(!user.getOrderedBooksId().contains(bookId)) {
-            user.addOrderedBook(bookId);
-            userRepo.save(user);
+           User userFromBD= userRepo.findById(user.getId()).orElse(new User());
+            userFromBD.getOrderedBooksId().add(bookId);
+            userRepo.save(userFromBD);
+            user.setOrderedBooksId(userFromBD.getOrderedBooksId());
         }
         return "redirect:/bookList";
     }

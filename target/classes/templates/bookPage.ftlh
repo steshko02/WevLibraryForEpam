@@ -8,7 +8,6 @@
         <div class="row">
             <div class="col-sm-4">
                 <img src="/img/${book.filename}" class="card-img-top" alt="No image">
-
             </div>
             <div class="col-sm-8">
                 <h5 class="display-4">${book.name}</h5>
@@ -33,6 +32,14 @@
                             <div class="alert alert-success" role="alert">
                                 Book in your lib!
                             </div>
+                            <form method="post" action="/userLib/delete">
+                                <div class="my-5">
+                                    <input type="hidden" name="bookId" value="${book.id}">
+                                    <button class="btn btn-outline-success">Delete</button>
+                                    <label>${message!}</label>
+                                    <input type="hidden" name="_csrf" value="${_csrf.token}" />
+                                </div>
+                            </form>
                             <#else>
                                 <form method="post" action="/bookPage">
                                     <div class="my-5">
@@ -54,21 +61,21 @@
                             <input type="hidden" name="_csrf" value="${_csrf.token}" />
                         </div>
                     </form>
-<#--                    <#if user.orderedBook(book.id)>-->
-<#--                        <div class="alert alert-warning" role="alert">-->
-<#--                            Book has been ordered!You can't delete this book!Deny or give order.-->
-<#--                        </div>-->
-<#--                    <#else>-->
-<#--                        <form method="post" action="/admin/bookList/delete">-->
-<#--                            <div class="my-5">-->
-<#--                                <input type="hidden" name="bookId" value="${book.id}">-->
-<#--                                <input type="hidden" name="userId" value="${user.id}" />-->
-<#--                                <button class="btn btn-outline-success">Delete</button>-->
-<#--                                <label>${message!}</label>-->
-<#--                                <input type="hidden" name="_csrf" value="${_csrf.token}" />-->
-<#--                            </div>-->
-<#--                        </form>-->
-<#--                        </#if>-->
+                    <#if errorDeleteID??>
+                        <div class="alert alert-warning" role="alert">
+                            Book has been ordered!You can't delete this book!Deny or give order.
+                        </div>
+                    <#else>
+                        <form method="post" action="/admin/bookList/delete">
+                            <div class="my-5">
+                                <input type="hidden" name="bookId" value="${book.id}">
+                                <input type="hidden" name="userId" value="${user.id}" />
+                                <button class="btn btn-outline-success">Delete</button>
+                                <label>${message!}</label>
+                                <input type="hidden" name="_csrf" value="${_csrf.token}" />
+                            </div>
+                        </form>
+                        </#if>
                     </#if>
                 </#if>
             </div>
