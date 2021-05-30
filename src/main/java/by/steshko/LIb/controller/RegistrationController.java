@@ -1,8 +1,8 @@
 package by.steshko.LIb.controller;
 
+import by.steshko.LIb.api.UserService;
 import by.steshko.LIb.domain.User;
-import by.steshko.LIb.repos.UserRepo;
-import by.steshko.LIb.service.UserService;
+import by.steshko.LIb.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +14,7 @@ import java.util.Map;
 @Controller
 public class RegistrationController {
     @Autowired
-    private  UserService userService;
-
+    private UserService userServiceImpl;
 
     @GetMapping("/registration")
     public String registration() {
@@ -25,7 +24,7 @@ public class RegistrationController {
     @PostMapping("/registration")
     public String addUser(User user, Map<String, Object> model) {
         boolean registered = true;
-        if(userService.ifExistByEmail(user.getEmail())) {
+        if(userServiceImpl.ifExistByEmail(user.getEmail())) {
            model.put("usernameMessage", "User exists");
            registered = false;
         }
@@ -41,7 +40,7 @@ public class RegistrationController {
             model.put("pass2Message", "Password mismatch");
             registered = false;
         }
-        if(!userService.addUser(user)||!registered) {
+        if(!userServiceImpl.addUser(user)||!registered) {
             return "registration";
         }
         else {
@@ -52,7 +51,7 @@ public class RegistrationController {
 
     @GetMapping("/activate/{code}")
     public String activate(Map<String, Object> model, @PathVariable String code) {
-        boolean isActivated = userService.activateUser(code);
+        boolean isActivated = userServiceImpl.activateUser(code);
         if(isActivated) {
             model.put("messageGood", "Your account has been successfully activated");
         }

@@ -5,9 +5,7 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -27,8 +25,6 @@ public class User implements UserDetails {
     private boolean active;
     private String email;
     private String activationCode;
-  //  https://java-master.com/%D1%81%D0%B2%D1%8F%D0%B7%D1%8C-manytomany-%D0%B2-hibernate/
- //   https://question-it.com/questions/343723/spring-data-jpa-zapros-manytomany-kak-ja-mogu-poluchit-dannye-iz-sopostavlennogo-klassa
     @ElementCollection
     @LazyCollection(LazyCollectionOption.FALSE)
     @CollectionTable(name = "user_orders", joinColumns = @JoinColumn(name = "user_id"))
@@ -38,7 +34,6 @@ public class User implements UserDetails {
     @LazyCollection(LazyCollectionOption.FALSE)
     @CollectionTable(name = "user_lib", joinColumns = @JoinColumn(name = "user_id"))
     private List<Long> libBooksId;
-
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
@@ -84,7 +79,6 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles();
     }
-
 
     public boolean isActive() {
         return active;

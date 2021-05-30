@@ -1,8 +1,10 @@
 package by.steshko.LIb.controller;
+import by.steshko.LIb.api.BookService;
+import by.steshko.LIb.api.UserService;
 import by.steshko.LIb.domain.Book;
 import by.steshko.LIb.domain.User;
-import by.steshko.LIb.repos.BookRepo;
-import by.steshko.LIb.repos.UserRepo;
+import by.steshko.LIb.service.BookServiceImpl;
+import by.steshko.LIb.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -19,19 +21,18 @@ import java.util.Map;
 @PreAuthorize("hasAuthority('USER')")
 public class UserOrdersController {
     @Autowired
-    private  BookRepo bookRepo;
+    private BookService bookServiceImpl;
     @Autowired
-    private  UserRepo userRepo;
+    private UserService userServiceImpl;
 
     @GetMapping("/userOrders")
     public String userOrders(@AuthenticationPrincipal User user,
                              Map<String, Object> model
     ) {
-        List<Book> books = new ArrayList<Book>();
+        List<Book> books = new ArrayList<>();
         for(Long id:user.getOrderedBooksId()) {
-            books.add(bookRepo.findById(id).orElse(new Book()));
+            books.add(bookServiceImpl.findById(id));
         }
-        //переделать
         model.put("books",books);
         return "userOrders";
     }
@@ -43,10 +44,10 @@ public class UserOrdersController {
     ) {
         List<Long> booksId = user.getOrderedBooksId();
         booksId.remove(bookId);
-        userRepo.save(user);
-        List<Book> books = new ArrayList<Book>();
+        userServiceImpl.save(user);
+        List<Book> books = new ArrayList<>();
         for(Long id:user.getOrderedBooksId()) {
-            books.add(bookRepo.findById(id).orElse(new Book()));
+            books.add(bookServiceImpl.findById(id));
         }
         model.put("books",books);
         return "userOrders";

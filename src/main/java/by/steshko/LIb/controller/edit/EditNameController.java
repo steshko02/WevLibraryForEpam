@@ -1,7 +1,8 @@
 package by.steshko.LIb.controller.edit;
 
+import by.steshko.LIb.api.UserService;
 import by.steshko.LIb.domain.User;
-import by.steshko.LIb.service.UserService;
+import by.steshko.LIb.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -18,7 +19,7 @@ import java.util.Map;
 @PreAuthorize("hasAuthority('USER')")
 public class EditNameController {
     @Autowired
-    private UserService userService;
+    private UserService userServiceImpl;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -39,7 +40,7 @@ public class EditNameController {
             model.put("oldPassMessage", "Password is not true.");
             edit = false;
         }
-        if(userService.ifExistByName(newName)){
+        if(userServiceImpl.ifExistByName(newName)){
             model.put("nameMessage", "This name is already taken.");
             edit = false;
         }
@@ -51,9 +52,8 @@ public class EditNameController {
             model.put("nameMessage", "Change name!");
             edit = false;
         }
-
         if(edit) {
-            userService.updateName(user, newName);
+            userServiceImpl.updateName(user, newName);
             model.put("messageGood", "Successful! Please check your email to activate the account.");
 
             SecurityContextHolder.clearContext();

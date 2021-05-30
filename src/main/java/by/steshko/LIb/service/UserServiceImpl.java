@@ -1,12 +1,12 @@
 package by.steshko.LIb.service;
 
+import by.steshko.LIb.api.UserService;
 import by.steshko.LIb.domain.Role;
 import by.steshko.LIb.domain.User;
 import by.steshko.LIb.repos.UserRepo;
 import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,11 +15,11 @@ import java.util.Collections;
 import java.util.UUID;
 
 @Service
-public class UserService implements UserDetailsService {
+public class UserServiceImpl implements UserService {
     @Autowired
     private  UserRepo userRepo;
     @Autowired
-    private  MailSender mailSender;
+    private MailSenderImpl mailSenderImpl;
     @Autowired
     private  PasswordEncoder passwordEncoder;
 
@@ -40,7 +40,7 @@ public class UserService implements UserDetailsService {
                         "To activate your account visit this link: http://localhost:8080/activate/%s",
                 user.getUsername(),user.getActivationCode()
         );
-        mailSender.send(user.getEmail(), "Activation code", message);
+        mailSenderImpl.send(user.getEmail(), "Activation code", message);
     }
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -69,6 +69,7 @@ public class UserService implements UserDetailsService {
     public  boolean ifExistByName(String name){
         return userRepo.existsByUsername(name);
     }
+
     public void updatePassword(@NotNull User user, String password,String oldPassword) {
 
         boolean isPasswordChanged=passwordEncoder.matches(oldPassword,user.getPassword());
@@ -76,12 +77,12 @@ public class UserService implements UserDetailsService {
         if(isPasswordChanged) {
             user.setPassword(passwordEncoder.encode(password));
             user.setActivationCode(UUID.randomUUID().toString());
-            user.setActive(false);//
-            userRepo.save(user);//
-            sendMessage(user);//
+            user.setActive(false);
+            userRepo.save(user);
+            sendMessage(user);
         }
     }
-//вынести в отдельный метод
+
     public void updateEmail(User user, String email) {
         boolean isEmailChanged=!email.equals(user.getEmail());
 
@@ -104,5 +105,17 @@ public class UserService implements UserDetailsService {
             userRepo.save(user);
             sendMessage(user);
         }
+    }
+
+    public User findById(Long userId) {
+      return  userRepo.findById(userId).orElse(null);
+    }
+
+    public void save(User user) {
+        userRepo.save(user);
+    }
+
+    public Iterable<User> getAll() {
+        return userRepo.findAll();
     }
 }

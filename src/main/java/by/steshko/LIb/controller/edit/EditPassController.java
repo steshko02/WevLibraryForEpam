@@ -1,6 +1,7 @@
 package by.steshko.LIb.controller.edit;
+import by.steshko.LIb.api.UserService;
 import by.steshko.LIb.domain.User;
-import by.steshko.LIb.service.UserService;
+import by.steshko.LIb.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -17,7 +18,7 @@ import java.util.Map;
 @PreAuthorize("hasAuthority('USER')")
 public class EditPassController {
     @Autowired
-    private UserService userService;
+    private UserService userServiceImpl;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -54,7 +55,7 @@ public class EditPassController {
             edit = false;
         }
         if(edit) {
-            userService.updatePassword(user, password,oldPassword);
+            userServiceImpl.updatePassword(user, password,oldPassword);
             model.put("messageGood", "Successful! Please check your email to activate the account.");
 
             SecurityContextHolder.clearContext();

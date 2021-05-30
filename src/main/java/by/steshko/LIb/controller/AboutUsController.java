@@ -7,7 +7,6 @@ import java.util.Map;
 
 @Controller
 public class AboutUsController {
-
     @GetMapping("/aboutUs")
     public String main(Map<String, Object> model){
         return "aboutUs";

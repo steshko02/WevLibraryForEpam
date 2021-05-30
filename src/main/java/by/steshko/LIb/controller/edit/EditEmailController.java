@@ -1,7 +1,8 @@
 package by.steshko.LIb.controller.edit;
 
+import by.steshko.LIb.api.UserService;
 import by.steshko.LIb.domain.User;
-import by.steshko.LIb.service.UserService;
+import by.steshko.LIb.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -19,7 +20,7 @@ import java.util.Map;
 
 public class EditEmailController {
     @Autowired
-    private UserService userService;
+    private UserService userServiceImpl;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -42,7 +43,7 @@ public class EditEmailController {
             model.put("oldPassMessage", "Password is not true.");
             edit = false;
         }
-        if(userService.ifExistByEmail(newEmail)){
+        if(userServiceImpl.ifExistByEmail(newEmail)){
             model.put("emailMessage", "This email is already taken.");
             edit = false;
         }
@@ -51,7 +52,7 @@ public class EditEmailController {
             edit = false;
         }
         if(edit) {
-            userService.updateEmail(user,newEmail);
+            userServiceImpl.updateEmail(user,newEmail);
             SecurityContextHolder.clearContext();
             model.put("messageGood", "Successful! Please check your email to confirm changes!");
             return "redirect:/login";
