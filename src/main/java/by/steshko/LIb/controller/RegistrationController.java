@@ -24,7 +24,8 @@ public class RegistrationController {
     @PostMapping("/registration")
     public String addUser(User user, Map<String, Object> model) {
         boolean registered = true;
-        if(userServiceImpl.ifExistByEmail(user.getEmail())) {
+        if(userServiceImpl.ifExistByEmail(user.getEmail()) ||
+                userServiceImpl.ifExistByName(user.getUsername())) {
            model.put("usernameMessage", "User exists");
            registered = false;
         }
@@ -40,7 +41,7 @@ public class RegistrationController {
             model.put("pass2Message", "Password mismatch");
             registered = false;
         }
-        if(!userServiceImpl.addUser(user)||!registered) {
+        if(!userServiceImpl.addUser(user) || !registered) {
             return "registration";
         }
         else {

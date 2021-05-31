@@ -24,6 +24,8 @@ public class UserServiceImpl implements UserService {
     private  PasswordEncoder passwordEncoder;
 
     public boolean addUser(User user){
+        if(!userRepo.existsByEmail(user.getEmail()) &&
+                !userRepo.existsByUsername(user.getUsername())){
         user.setRoles(Collections.singleton(Role.USER));
         user.setActivationCode(UUID.randomUUID().toString());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -31,6 +33,8 @@ public class UserServiceImpl implements UserService {
 
         sendMessage(user);
         return true;
+        }
+        return false;
     }
 
     public  void sendMessage(User user){

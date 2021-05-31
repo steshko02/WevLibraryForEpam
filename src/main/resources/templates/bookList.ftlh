@@ -4,7 +4,7 @@
       <form method="get" class="navbar-form navbar-right" action="filter">
           <div class="input-group">
               <div class="form-outline">
-                  <input name="filter" type="search" id="form1" class="form-control"/>
+                  <input name="filter" type="search" id="form1" class="form-control" placeholder="Search..."/>
                   <label class="form-label" for="form1" ></label>
               </div>
               <button type="submit" class="btn btn-primary" style="width: 60px; height: 37px" >
