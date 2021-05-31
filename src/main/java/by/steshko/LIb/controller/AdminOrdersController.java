@@ -3,10 +3,7 @@ package by.steshko.LIb.controller;
 import by.steshko.LIb.api.BookService;
 import by.steshko.LIb.api.UserService;
 import by.steshko.LIb.domain.User;
-import by.steshko.LIb.repos.BookRepo;
 import by.steshko.LIb.repos.UserRepo;
-import by.steshko.LIb.service.BookServiceImpl;
-import by.steshko.LIb.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -20,8 +17,7 @@ import java.util.Map;
 @Controller
 @PreAuthorize("hasAuthority('ADMIN')")
 public class AdminOrdersController {
-    @Autowired
-    private  UserRepo userRepo;
+
     @Autowired
     private UserService userServiceImpl;
     @Autowired

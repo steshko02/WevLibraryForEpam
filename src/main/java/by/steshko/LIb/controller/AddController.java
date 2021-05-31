@@ -41,7 +41,6 @@ public class AddController {
             @RequestParam("file") MultipartFile file
     ) throws IOException {
         Book book = new Book(name,year, isbn, genre, author, description);
-
         String resultFilename = bookServiceImpl.filePathCreate(file);
         file.transferTo(new File(uploadPath+"/"+resultFilename));
         book.setFilename(resultFilename);

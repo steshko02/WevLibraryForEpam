@@ -53,7 +53,6 @@
                                         <input type="hidden" name="_csrf" value="${_csrf.token}" />
                                     </form>
                                 </div>
-
                             </div>
                         </div>
                     </#list>

@@ -25,6 +25,7 @@ public class UserLibController {
     private UserService userServiceImpl;
     @Autowired
     private BookService bookServiceImpl;
+
     @GetMapping("/userLib")
     public String lib(@AuthenticationPrincipal User user, Map<String, Object> model) {
         List<Long> libBooksId = user.getLibBooksId();

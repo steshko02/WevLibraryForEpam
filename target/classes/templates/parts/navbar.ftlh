@@ -45,6 +45,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/adminOrders">Orders</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/userList">Users</a>
+                    </li>
                 </#if>
             </#if>
         </ul>

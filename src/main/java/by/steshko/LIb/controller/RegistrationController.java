@@ -41,7 +41,7 @@ public class RegistrationController {
             model.put("pass2Message", "Password mismatch");
             registered = false;
         }
-        if(!userServiceImpl.addUser(user) || !registered) {
+        if(!registered || !userServiceImpl.addUser(user) ) {
             return "registration";
         }
         else {
